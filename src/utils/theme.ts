@@ -15,6 +15,25 @@ const theme = {
   borderRadius: '16px',
 
   fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
+
+  h1: {
+    fontSize: '64px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: 'normal',
+  },
+  h3: {
+    fontSize: '24px',
+    fontStyle: 'italic',
+    fontWeight: '700',
+    lineHeight: 'normal',
+  },
+  h4: {
+    fontSize: '20px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: 'normal',
+  },
 };
 
 const darkTheme = {
@@ -24,6 +43,9 @@ const darkTheme = {
   text: {
     color: theme.colors.white,
   },
+  line: {
+    bg: theme.colors.gray3A,
+  },
 };
 
 // const lightTheme = {
@@ -32,7 +54,10 @@ const darkTheme = {
 //   color: theme.colors.gray2D,
 //   text: {
 //     color: theme.colors.gray2D,
-//   }
+//   },
+//   line: {
+//     bg: theme.colors.grayE9,
+//   },
 // }
 
 export default darkTheme;

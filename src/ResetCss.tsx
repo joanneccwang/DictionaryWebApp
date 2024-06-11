@@ -6,7 +6,7 @@ function ResetCSS() {
       styles={(theme) => ({
         ':root': {
           backgroundColor: theme.colors.black,
-          color: theme.colors.green,
+          color: theme.text.color,
           fontFamily: theme.fontFamily,
           fontOpticalSizing: 'auto',
           fontStyle: 'normal',
