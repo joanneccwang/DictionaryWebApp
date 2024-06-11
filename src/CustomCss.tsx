@@ -4,12 +4,12 @@ function CustomCss() {
   return (
     <Global
       styles={(theme) => ({
-        h1: {
-          fontWeight: 300,
-          margin: 0,
-        },
+        // h1: {
+        //   fontWeight: 300,
+        //   margin: 0,
+        // },
         p: {
-          color: theme.colors.gray1,
+          color: theme.text.color,
           margin: 0,
         },
 
