@@ -46,6 +46,10 @@ const darkTheme = {
   line: {
     bg: theme.colors.gray3A,
   },
+  input: {
+    bg: theme.colors.gray1F,
+    color: theme.colors.white,
+  },
 };
 
 // const lightTheme = {
@@ -58,6 +62,10 @@ const darkTheme = {
 //   line: {
 //     bg: theme.colors.grayE9,
 //   },
+//  input: {
+//     bg: theme.colors.grayF4,
+//     color: theme.colors.gray2D,
+//  },
 // }
 
 export default darkTheme;

@@ -9,7 +9,6 @@ function App() {
         maxWidth: '736px',
         margin: '0 auto',
         height: '100%',
-        border: '1px solid hotpink',
         display: 'flex',
         flexDirection: 'column',
       }}
