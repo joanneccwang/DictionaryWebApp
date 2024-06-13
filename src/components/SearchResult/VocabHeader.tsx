@@ -8,7 +8,7 @@ function VocabHeader({ vocab }: { vocab: Vocab }) {
         <div
           css={(theme) => ({ color: theme.colors.purple, marginTop: '8px' })}
         >
-          {vocab.kk}
+          {`/${vocab.phonetic}/`}
         </div>
       </div>
       <div></div>

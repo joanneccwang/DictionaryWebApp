@@ -1,6 +1,7 @@
 import type { Vocab } from '@/types/vocabulary';
 import VocabHeader from './VocabHeader';
 import VocabDefinition from './VocabDefinition';
+import SourceUrl from './SourceUrl';
 
 function SearchResult() {
   const test: Vocab = {
@@ -43,6 +44,7 @@ function SearchResult() {
       {test.partOfSpeechs.map((definition) => (
         <VocabDefinition definition={definition}></VocabDefinition>
       ))}
+      <SourceUrl urls={test.sourceUrls}></SourceUrl>
     </section>
   );
 }

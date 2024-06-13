@@ -13,9 +13,11 @@ function App() {
         flexDirection: 'column',
       }}
     >
-      <Header></Header>
-      <SearchBar></SearchBar>
-      <SearchResult></SearchResult>
+      <div css={{ padding: '50px 0px' }}>
+        <Header></Header>
+        <SearchBar></SearchBar>
+        <SearchResult></SearchResult>
+      </div>
     </main>
   );
 }

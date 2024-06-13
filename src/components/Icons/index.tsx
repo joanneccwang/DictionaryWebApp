@@ -1,4 +1,5 @@
 import IconLogo from './IconLogo';
 import IconSearch from './IconSearch';
+import IconNewWindow from './IconNewWindow';
 
-export { IconLogo, IconSearch };
+export { IconLogo, IconSearch, IconNewWindow };

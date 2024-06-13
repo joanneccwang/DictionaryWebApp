@@ -7,7 +7,6 @@ function Header() {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: '50px',
       }}
     >
       <IconLogo></IconLogo>

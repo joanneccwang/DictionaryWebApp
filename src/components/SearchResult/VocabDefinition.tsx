@@ -2,6 +2,9 @@ import type {
   Definition,
   VocabDefinition as VocabDefinitionType,
 } from '@/types/vocabulary';
+
+import Line from '@components/Line';
+
 const PartOfSpeech = ({ pos }: { pos: string }) => {
   return (
     <div
@@ -20,13 +23,7 @@ const PartOfSpeech = ({ pos }: { pos: string }) => {
       >
         {pos}
       </h3>
-      <div
-        css={(theme) => ({
-          flex: '1',
-          height: '1px',
-          background: theme.line.bg,
-        })}
-      ></div>
+      <Line></Line>
     </div>
   );
 };

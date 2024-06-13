@@ -50,6 +50,9 @@ const darkTheme = {
     bg: theme.colors.gray1F,
     color: theme.colors.white,
   },
+  a: {
+    color: theme.colors.white,
+  },
 };
 
 // const lightTheme = {
@@ -64,6 +67,9 @@ const darkTheme = {
 //   },
 //  input: {
 //     bg: theme.colors.grayF4,
+//     color: theme.colors.gray2D,
+//  },
+//  a: {
 //     color: theme.colors.gray2D,
 //  },
 // }
