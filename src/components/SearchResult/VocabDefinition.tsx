@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { CurrentKeywordContext, TypeCurrentKeywordContext } from '@/context';
 import type {
   Definition,
   VocabDefinition as VocabDefinitionType,
@@ -28,6 +30,10 @@ const PartOfSpeech = ({ pos }: { pos: string }) => {
   );
 };
 const SynOrAnt = ({ title, words }: { title: string; words: string[] }) => {
+  const { handleSearch } = useContext(
+    CurrentKeywordContext
+  ) as TypeCurrentKeywordContext;
+
   return (
     <div
       css={{
@@ -45,7 +51,12 @@ const SynOrAnt = ({ title, words }: { title: string; words: string[] }) => {
             color: theme.colors.purple,
             fontWeight: '700',
             cursor: 'pointer',
+            marginRight: '8px',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
           })}
+          onClick={() => handleSearch(word)}
         >
           {word}
         </span>

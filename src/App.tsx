@@ -5,13 +5,15 @@ import SearchBar from '@components/SearchBar';
 import SearchResult from '@components/SearchResult';
 
 import { fetchKeyword } from '@/api/fetchKeyword';
+import { CurrentKeywordContext } from './context';
 
 function App() {
-  const [keyword, setKeyword] = useState('');
+  const [currentKeyword, setCurrentKeyword] = useState('');
+
   const [vocabDef, setVocabDef] = useState<Vocab | null>();
 
   const handleSearch = (searchWord: string) => {
-    setKeyword(searchWord);
+    setCurrentKeyword(searchWord);
   };
   const getVocabDefinition = async (keyword: string) => {
     try {
@@ -22,27 +24,30 @@ function App() {
       // TODO: handle Error
     }
   };
+
   useEffect(() => {
-    if (keyword === '') return;
-    getVocabDefinition(keyword);
-  }, [keyword]);
+    if (currentKeyword === '') return;
+    getVocabDefinition(currentKeyword);
+  }, [currentKeyword]);
 
   return (
-    <main
-      css={{
-        maxWidth: '736px',
-        margin: '0 auto',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <div css={{ padding: '50px 0px' }}>
-        <Header></Header>
-        <SearchBar onSearch={handleSearch}></SearchBar>
-        {vocabDef && <SearchResult vocab={vocabDef}></SearchResult>}
-      </div>
-    </main>
+    <CurrentKeywordContext.Provider value={{ currentKeyword, handleSearch }}>
+      <main
+        css={{
+          maxWidth: '736px',
+          margin: '0 auto',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <div css={{ padding: '50px 0px' }}>
+          <Header></Header>
+          <SearchBar></SearchBar>
+          {vocabDef && <SearchResult vocab={vocabDef}></SearchResult>}
+        </div>
+      </main>
+    </CurrentKeywordContext.Provider>
   );
 }
 

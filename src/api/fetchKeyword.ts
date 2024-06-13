@@ -9,7 +9,6 @@ async function fetchKeyword(params: {
       method: 'GET',
     }).then((response) => response.json());
 
-    console.log({ dataList });
     const data = dataList[0]; // to simplify, only take the first result
     const parsed: Vocab = {
       vocab: data.word,
@@ -17,9 +16,9 @@ async function fetchKeyword(params: {
       partOfSpeechs: data.meanings,
       sourceUrls: data.sourceUrls,
     };
-    console.log({ parsed });
     return parsed;
   } catch (error) {
+    // TODO: if 404 => word not found
     console.error({ error });
     throw new Error('Fetch Keyword Error');
   }

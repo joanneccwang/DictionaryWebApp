@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { IconSearch } from '@components/Icons';
+import { CurrentKeywordContext, TypeCurrentKeywordContext } from '@/context';
 
 type FunctionOnEnter = (keyword: string) => void;
 
 const SearchInput = ({ onEnter }: { onEnter: FunctionOnEnter }) => {
+  const { currentKeyword } = useContext(
+    CurrentKeywordContext
+  ) as TypeCurrentKeywordContext;
+
   const [keyword, setKeyword] = useState('');
+
+  useEffect(() => {
+    setKeyword(currentKeyword);
+  }, [currentKeyword]);
 
   const handleInput = (event: React.FormEvent) => {
     setKeyword((event.target as HTMLInputElement).value);
@@ -61,7 +70,10 @@ const SearchInput = ({ onEnter }: { onEnter: FunctionOnEnter }) => {
   );
 };
 
-function SearchBar({ onSearch }: { onSearch: (keyword: string) => void }) {
+function SearchBar() {
+  const { handleSearch } = useContext(
+    CurrentKeywordContext
+  ) as TypeCurrentKeywordContext;
   return (
     <section
       css={{
@@ -71,7 +83,7 @@ function SearchBar({ onSearch }: { onSearch: (keyword: string) => void }) {
       }}
     >
       <SearchInput
-        onEnter={(keyword: string) => onSearch(keyword)}
+        onEnter={(keyword: string) => handleSearch(keyword)}
       ></SearchInput>
     </section>
   );
