@@ -39,6 +39,7 @@ const SynOrAnt = ({ title, words }: { title: string; words: string[] }) => {
       <h4 css={{ marginRight: '20px' }}>{title}</h4>
       {words.map((word) => (
         <span
+          key={word}
           css={(theme) => ({
             display: 'inline-flex',
             color: theme.colors.purple,
@@ -64,6 +65,7 @@ const DefinitionList = ({ list }: { list: Definition[] }) => {
       >
         {list.map((definition) => (
           <li
+            key={definition.definition}
             css={(theme) => ({
               '&::marker': {
                 color: theme.colors.purple,
@@ -96,10 +98,10 @@ function VocabDefinition({ definition }: { definition: VocabDefinitionType }) {
       <DefinitionList list={definition.definitions}></DefinitionList>
 
       <div css={{ marginTop: '64px' }}>
-        {definition?.synonyms && (
+        {definition.synonyms && definition.synonyms.length > 0 && (
           <SynOrAnt title='Synonym' words={definition.synonyms}></SynOrAnt>
         )}
-        {definition?.antonyms && (
+        {definition.antonyms && definition.antonyms.length > 0 && (
           <SynOrAnt title='Antonym' words={definition.antonyms}></SynOrAnt>
         )}
       </div>

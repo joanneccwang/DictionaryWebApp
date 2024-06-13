@@ -3,13 +3,14 @@ import { IconNewWindow } from '@components/Icons';
 
 function SourceUrl({ urls }: { urls: string[] }) {
   return (
-    <section>
+    <section css={{ marginTop: '40px' }}>
       <Line></Line>
       <div css={{ display: 'flex', flexDirection: 'row', marginTop: '20px' }}>
         <div css={{ marginRight: '20px' }}>Source</div>
         <div css={{ display: 'flex', flexDirection: 'column' }}>
           {urls.map((url) => (
             <div
+              key={url}
               css={{
                 display: 'flex',
                 flexDirection: 'row',

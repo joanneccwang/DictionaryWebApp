@@ -12,7 +12,15 @@ export interface VocabDefinition {
 
 export interface Vocab {
   vocab: string;
-  phonetic: string;
+  phonetic?: {
+    text?: string;
+    audio: string;
+    sourceUrl: string;
+    license: {
+      name: string;
+      url: string;
+    };
+  };
   partOfSpeechs: VocabDefinition[];
   sourceUrls: string[];
 }

@@ -5,11 +5,13 @@ function VocabHeader({ vocab }: { vocab: Vocab }) {
     <div css={{ display: 'flex', flexDirection: 'row' }}>
       <div>
         <h1>{vocab.vocab}</h1>
-        <div
-          css={(theme) => ({ color: theme.colors.purple, marginTop: '8px' })}
-        >
-          {`/${vocab.phonetic}/`}
-        </div>
+        {vocab.phonetic && (
+          <div
+            css={(theme) => ({ color: theme.colors.purple, marginTop: '8px' })}
+          >
+            {`${vocab.phonetic.text}`}
+          </div>
+        )}
       </div>
       <div></div>
     </div>

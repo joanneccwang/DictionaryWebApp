@@ -1,6 +1,21 @@
+import { useState } from 'react';
 import { IconSearch } from '@components/Icons';
 
-const SearchInput = () => {
+type FunctionOnEnter = (keyword: string) => void;
+
+const SearchInput = ({ onEnter }: { onEnter: FunctionOnEnter }) => {
+  const [keyword, setKeyword] = useState('');
+
+  const handleInput = (event: React.FormEvent) => {
+    setKeyword((event.target as HTMLInputElement).value);
+  };
+  const handleHitEnter = (event: React.KeyboardEvent) => {
+    // TODO: validate keyword
+    if (event.key === 'Enter') {
+      onEnter(keyword);
+    }
+  };
+
   return (
     <div
       css={(theme) => ({
@@ -28,6 +43,9 @@ const SearchInput = () => {
           fontWeight: '700',
           lineHeight: 'normal',
         })}
+        value={keyword}
+        onInput={handleInput}
+        onKeyDown={handleHitEnter}
       />
       <div
         css={{
@@ -43,7 +61,7 @@ const SearchInput = () => {
   );
 };
 
-function SearchBar() {
+function SearchBar({ onSearch }: { onSearch: (keyword: string) => void }) {
   return (
     <section
       css={{
@@ -52,7 +70,9 @@ function SearchBar() {
         flexDirection: 'row',
       }}
     >
-      <SearchInput></SearchInput>
+      <SearchInput
+        onEnter={(keyword: string) => onSearch(keyword)}
+      ></SearchInput>
     </section>
   );
 }
