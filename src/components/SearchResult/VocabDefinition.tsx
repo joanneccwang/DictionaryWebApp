@@ -1,6 +1,6 @@
 import type {
-  Meaning,
-  VocabMeaning as VocabMeaningType,
+  Definition,
+  VocabDefinition as VocabDefinitionType,
 } from '@/types/vocabulary';
 const PartOfSpeech = ({ pos }: { pos: string }) => {
   return (
@@ -30,18 +30,17 @@ const PartOfSpeech = ({ pos }: { pos: string }) => {
     </div>
   );
 };
-const Synonyms = ({ synonyms }: { synonyms: string[] }) => {
+const SynOrAnt = ({ title, words }: { title: string; words: string[] }) => {
   return (
     <div
       css={{
         display: 'flex',
         flexDirection: 'row',
-        marginTop: '64px',
         alignItems: 'center',
       }}
     >
-      <h4 css={{ marginRight: '20px' }}>Synonyms</h4>
-      {synonyms.map((syn) => (
+      <h4 css={{ marginRight: '20px' }}>{title}</h4>
+      {words.map((word) => (
         <span
           css={(theme) => ({
             display: 'inline-flex',
@@ -50,14 +49,14 @@ const Synonyms = ({ synonyms }: { synonyms: string[] }) => {
             cursor: 'pointer',
           })}
         >
-          {syn}
+          {word}
         </span>
       ))}
     </div>
   );
 };
 
-const MeaningList = ({ list }: { list: Meaning[] }) => {
+const DefinitionList = ({ list }: { list: Definition[] }) => {
   return (
     <div>
       <h4>Meaning</h4>
@@ -66,7 +65,7 @@ const MeaningList = ({ list }: { list: Meaning[] }) => {
           listStyleType: 'disc',
         })}
       >
-        {list.map((meaning) => (
+        {list.map((definition) => (
           <li
             css={(theme) => ({
               '&::marker': {
@@ -75,15 +74,15 @@ const MeaningList = ({ list }: { list: Meaning[] }) => {
               marginBottom: '13px',
             })}
           >
-            {meaning.meaning}
-            {meaning?.example && (
+            {definition.definition}
+            {definition?.example && (
               <div
                 css={(theme) => ({
                   color: theme.colors.gray75,
                   marginTop: '13px',
                 })}
               >
-                {meaning.example}
+                {definition.example}
               </div>
             )}
           </li>
@@ -93,14 +92,22 @@ const MeaningList = ({ list }: { list: Meaning[] }) => {
   );
 };
 
-function VocabMeaning({ meaning }: { meaning: VocabMeaningType }) {
+function VocabDefinition({ definition }: { definition: VocabDefinitionType }) {
   return (
     <section css={{ display: 'flex', flexDirection: 'column' }}>
-      <PartOfSpeech pos={meaning.pos}></PartOfSpeech>
-      <MeaningList list={meaning.meanings}></MeaningList>
-      {meaning?.synonyms && <Synonyms synonyms={meaning.synonyms}></Synonyms>}
+      <PartOfSpeech pos={definition.partOfSpeech}></PartOfSpeech>
+      <DefinitionList list={definition.definitions}></DefinitionList>
+
+      <div css={{ marginTop: '64px' }}>
+        {definition?.synonyms && (
+          <SynOrAnt title='Synonym' words={definition.synonyms}></SynOrAnt>
+        )}
+        {definition?.antonyms && (
+          <SynOrAnt title='Antonym' words={definition.antonyms}></SynOrAnt>
+        )}
+      </div>
     </section>
   );
 }
 
-export default VocabMeaning;
+export default VocabDefinition;

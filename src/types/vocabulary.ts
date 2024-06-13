@@ -1,16 +1,18 @@
-export interface Meaning {
-  meaning: string;
+export interface Definition {
+  definition: string;
   example?: string;
 }
 
-export interface VocabMeaning {
-  pos: string;
+export interface VocabDefinition {
+  partOfSpeech: string;
+  definitions: Definition[];
   synonyms?: string[];
-  meanings: Meaning[];
+  antonyms?: string[];
 }
 
 export interface Vocab {
   vocab: string;
-  kk: string;
-  partOfSpeechs: VocabMeaning[];
+  phonetic: string;
+  partOfSpeechs: VocabDefinition[];
+  sourceUrls: string[];
 }
