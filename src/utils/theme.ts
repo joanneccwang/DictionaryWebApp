@@ -42,6 +42,7 @@ const darkTheme = {
   color: theme.colors.white,
   text: {
     color: theme.colors.white,
+    secondary: theme.colors.gray75,
   },
   line: {
     bg: theme.colors.gray3A,
@@ -61,6 +62,7 @@ const darkTheme = {
 //   color: theme.colors.gray2D,
 //   text: {
 //     color: theme.colors.gray2D,
+//     secondary: theme.colors.gray75,
 //   },
 //   line: {
 //     bg: theme.colors.grayE9,

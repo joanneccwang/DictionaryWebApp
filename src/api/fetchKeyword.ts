@@ -1,14 +1,25 @@
 import type { Vocab } from '@/types/vocabulary';
-import type { APIFetchKeywordResponse } from './typing';
+import type { APIFetchKeywordResponse, APIError } from './typing';
+import { ERROR_NOT_FOUND } from '@/utils/constants';
+
 async function fetchKeyword(params: {
   keyword: string;
-}): Promise<Vocab | undefined> {
+}): Promise<Vocab | APIError | undefined> {
   const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${params.keyword}`;
   try {
-    const dataList: APIFetchKeywordResponse = await fetch(url, {
+    const response = await fetch(url, {
       method: 'GET',
-    }).then((response) => response.json());
+    });
+    if (response.status === ERROR_NOT_FOUND) {
+      const errorObj = await response.json();
+      return {
+        status: response.status,
+        title: errorObj.title,
+        message: `${errorObj.message} ${errorObj.resolution}`,
+      };
+    }
 
+    const dataList: APIFetchKeywordResponse = await response.json();
     const data = dataList[0]; // to simplify, only take the first result
     const parsed: Vocab = {
       vocab: data.word,
@@ -18,9 +29,12 @@ async function fetchKeyword(params: {
     };
     return parsed;
   } catch (error) {
-    // TODO: if 404 => word not found
     console.error({ error });
-    throw new Error('Fetch Keyword Error');
+    return {
+      status: 0,
+      title: 'Woops',
+      message: 'Something Wrong',
+    };
   }
 }
 

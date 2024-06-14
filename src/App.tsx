@@ -6,11 +6,25 @@ import SearchResult from '@components/SearchResult';
 
 import { fetchKeyword } from '@/api/fetchKeyword';
 import { CurrentKeywordContext } from './context';
+import isErrorResponse from './utils/isErrorResponse';
+import ErrorBlock from './components/ErrorBlock';
 
 function App() {
   const [currentKeyword, setCurrentKeyword] = useState('');
 
   const [vocabDef, setVocabDef] = useState<Vocab | null>();
+  const [errorMsg, setErrorMsg] = useState<
+    | {
+        isError: true;
+        errorObj: {
+          title: string;
+          message: string;
+        };
+      }
+    | { isError: false | null }
+  >({
+    isError: null,
+  });
 
   const handleSearch = (searchWord: string) => {
     setCurrentKeyword(searchWord);
@@ -19,7 +33,15 @@ function App() {
     try {
       const params = { keyword: keyword };
       const vocab = await fetchKeyword(params);
-      setVocabDef(vocab);
+      if (isErrorResponse(vocab)) {
+        setErrorMsg({
+          isError: true,
+          errorObj: { title: vocab.title, message: vocab.message },
+        });
+      } else {
+        setErrorMsg({ isError: false });
+        setVocabDef(vocab);
+      }
     } catch (error) {
       // TODO: handle Error
     }
@@ -44,7 +66,11 @@ function App() {
         <div css={{ padding: '50px 0px' }}>
           <Header></Header>
           <SearchBar></SearchBar>
-          {vocabDef && <SearchResult vocab={vocabDef}></SearchResult>}
+          {errorMsg.isError === true ? (
+            <ErrorBlock error={errorMsg.errorObj}></ErrorBlock>
+          ) : (
+            vocabDef && <SearchResult vocab={vocabDef}></SearchResult>
+          )}
         </div>
       </main>
     </CurrentKeywordContext.Provider>

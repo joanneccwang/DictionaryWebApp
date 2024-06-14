@@ -1,3 +1,9 @@
+export type APIError = {
+  status: number;
+  message: string;
+  title: string;
+};
+
 export type APIFetchKeywordResponse = {
   word: string;
   phonetics: {
