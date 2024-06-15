@@ -9,6 +9,8 @@ import { CurrentKeywordContext } from './context';
 import isErrorResponse from './utils/isErrorResponse';
 import ErrorBlock from './components/ErrorBlock';
 
+import MyThemeProvider from './MyThemeProvider';
+
 function App() {
   const [currentKeyword, setCurrentKeyword] = useState('');
 
@@ -53,27 +55,29 @@ function App() {
   }, [currentKeyword]);
 
   return (
-    <CurrentKeywordContext.Provider value={{ currentKeyword, handleSearch }}>
-      <main
-        css={{
-          maxWidth: '736px',
-          margin: '0 auto',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <div css={{ padding: '50px 0px' }}>
-          <Header></Header>
-          <SearchBar></SearchBar>
-          {errorMsg.isError === true ? (
-            <ErrorBlock error={errorMsg.errorObj}></ErrorBlock>
-          ) : (
-            vocabDef && <SearchResult vocab={vocabDef}></SearchResult>
-          )}
-        </div>
-      </main>
-    </CurrentKeywordContext.Provider>
+    <MyThemeProvider>
+      <CurrentKeywordContext.Provider value={{ currentKeyword, handleSearch }}>
+        <main
+          css={{
+            maxWidth: '736px',
+            margin: '0 auto',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div css={{ padding: '50px 0px' }}>
+            <Header></Header>
+            <SearchBar></SearchBar>
+            {errorMsg.isError === true ? (
+              <ErrorBlock error={errorMsg.errorObj}></ErrorBlock>
+            ) : (
+              vocabDef && <SearchResult vocab={vocabDef}></SearchResult>
+            )}
+          </div>
+        </main>
+      </CurrentKeywordContext.Provider>
+    </MyThemeProvider>
   );
 }
 

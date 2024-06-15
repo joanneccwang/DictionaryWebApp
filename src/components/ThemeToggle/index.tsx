@@ -1,11 +1,22 @@
 import { useState } from 'react';
 import { IconMoon } from '@components/Icons';
 
-const ToggleSwitch = ({ className }: { className?: string }) => {
+import { useDispatch } from 'react-redux';
+import { toggleTheme } from '@/store/themeSlice';
+
+const ToggleSwitch = ({
+  onChange,
+  className,
+}: {
+  onChange: (status: boolean) => unknown;
+  className?: string;
+}) => {
   const [isOn, setIsOn] = useState(true);
   const handleClickSwitch = () => {
     setIsOn(!isOn);
+    onChange(isOn);
   };
+  console.log({ isOn });
   return (
     <div
       className={className}
@@ -16,7 +27,7 @@ const ToggleSwitch = ({ className }: { className?: string }) => {
         backgroundColor: theme.switch.bg,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: isOn ? 'start' : 'end',
+        justifyContent: isOn ? 'end' : 'start',
         cursor: 'pointer',
         padding: '0px 3px',
       })}
@@ -35,6 +46,12 @@ const ToggleSwitch = ({ className }: { className?: string }) => {
 };
 
 function ThemeToggle() {
+  const dispatch = useDispatch();
+
+  const handleToggleTheme = (status: boolean) => {
+    const theme = status === true ? 'dark' : 'light';
+    dispatch(toggleTheme(theme));
+  };
   return (
     <div
       css={{
@@ -43,7 +60,10 @@ function ThemeToggle() {
         alignItems: 'center',
       }}
     >
-      <ToggleSwitch css={{ marginRight: '20px' }}></ToggleSwitch>
+      <ToggleSwitch
+        css={{ marginRight: '20px' }}
+        onChange={(status) => handleToggleTheme(status)}
+      ></ToggleSwitch>
 
       {/* TODO: change icon fill color */}
       <IconMoon

@@ -1,5 +1,7 @@
 import { useContext } from 'react';
-import { CurrentKeywordContext, TypeCurrentKeywordContext } from '@/context';
+import { CurrentKeywordContext } from '@/context';
+import type { TypeCurrentKeywordContext } from '@/context/currentKeywordContext';
+
 import type {
   Definition,
   VocabDefinition as VocabDefinitionType,
@@ -43,9 +45,9 @@ const SynOrAnt = ({ title, words }: { title: string; words: string[] }) => {
       }}
     >
       <h4 css={{ marginRight: '20px' }}>{title}</h4>
-      {words.map((word) => (
+      {words.map((word, idx) => (
         <span
-          key={word}
+          key={`${word}-${idx}`}
           css={(theme) => ({
             display: 'inline-flex',
             color: theme.colors.purple,

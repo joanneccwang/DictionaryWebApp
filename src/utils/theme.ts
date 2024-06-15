@@ -59,27 +59,27 @@ const darkTheme = {
   },
 };
 
-// const lightTheme = {
-//   ...theme,
-//   background: theme.colors.white,
-//   color: theme.colors.gray2D,
-//   text: {
-//     color: theme.colors.gray2D,
-//     secondary: theme.colors.gray75,
-//   },
-//   line: {
-//     bg: theme.colors.grayE9,
-//   },
-//  input: {
-//     bg: theme.colors.grayF4,
-//     color: theme.colors.gray2D,
-//  },
-//  a: {
-//     color: theme.colors.gray2D,
-//  },
-//  switch: {
-//     bg: theme.colors.gray75,
-//  }
-// }
+const lightTheme = {
+  ...theme,
+  background: theme.colors.white,
+  color: theme.colors.gray2D,
+  text: {
+    color: theme.colors.gray2D,
+    secondary: theme.colors.gray75,
+  },
+  line: {
+    bg: theme.colors.grayE9,
+  },
+  input: {
+    bg: theme.colors.grayF4,
+    color: theme.colors.gray2D,
+  },
+  a: {
+    color: theme.colors.gray2D,
+  },
+  switch: {
+    bg: theme.colors.gray75,
+  },
+};
 
-export default darkTheme;
+export { darkTheme, lightTheme };

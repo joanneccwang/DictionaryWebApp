@@ -5,7 +5,7 @@ function ResetCSS() {
     <Global
       styles={(theme) => ({
         ':root': {
-          backgroundColor: theme.colors.black,
+          backgroundColor: theme.background,
           color: theme.text.color,
           fontFamily: theme.fontFamily,
           fontOpticalSizing: 'auto',
