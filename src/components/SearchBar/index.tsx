@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { IconSearch } from '@components/Icons';
-import { CurrentKeywordContext, TypeCurrentKeywordContext } from '@/context';
+import { CurrentKeywordContext } from '@/context';
+import type { TypeCurrentKeywordContext } from '@/context/currentKeywordContext';
 
 type FunctionOnEnter = (keyword: string) => void;
 
