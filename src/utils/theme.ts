@@ -54,6 +54,9 @@ const darkTheme = {
   a: {
     color: theme.colors.white,
   },
+  switch: {
+    bg: theme.colors.purple,
+  },
 };
 
 // const lightTheme = {
@@ -74,6 +77,9 @@ const darkTheme = {
 //  a: {
 //     color: theme.colors.gray2D,
 //  },
+//  switch: {
+//     bg: theme.colors.gray75,
+//  }
 // }
 
 export default darkTheme;

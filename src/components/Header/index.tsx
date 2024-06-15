@@ -1,4 +1,5 @@
 import { IconLogo } from '@components/Icons';
+import ThemeToggle from '@components/ThemeToggle';
 
 function Header() {
   return (
@@ -10,7 +11,9 @@ function Header() {
       }}
     >
       <IconLogo></IconLogo>
-      <div>Toolbar</div>
+      <div>
+        <ThemeToggle></ThemeToggle>
+      </div>
     </header>
   );
 }
