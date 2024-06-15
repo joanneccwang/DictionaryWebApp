@@ -13,10 +13,11 @@ const ToggleSwitch = ({
 }) => {
   const [isOn, setIsOn] = useState(true);
   const handleClickSwitch = () => {
-    setIsOn(!isOn);
-    onChange(isOn);
+    setIsOn((prevIsOn) => {
+      onChange(!prevIsOn);
+      return !prevIsOn;
+    });
   };
-  console.log({ isOn });
   return (
     <div
       className={className}

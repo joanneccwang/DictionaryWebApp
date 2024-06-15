@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from './themeSlice';
 
-export type StoreRootState = ReturnType<typeof store.getState>;
-
 const store = configureStore({
   reducer: {
     theme: themeReducer,
@@ -13,5 +11,7 @@ const store = configureStore({
 //   const value = store.getState();
 //   console.log({ value });
 // });
+
+export type StoreRootState = ReturnType<typeof store.getState>;
 
 export default store;
