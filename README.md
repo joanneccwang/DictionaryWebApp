@@ -40,6 +40,7 @@ Users should be able to:
 
 - Vite
 - [React](https://reactjs.org/) - JS library
+- [Redux](https://redux.js.org/tutorials/)
 - [Emotion](https://emotion.sh/docs/introduction) - For CSS In JS
 
 ### What I learned
@@ -78,8 +79,8 @@ const { handleSearch } = useContext(
 
 ### Continued development
 
-- [] Show error block if the definition of the searched keyword cannot be found
-- [] Add theme switch to toggle between dark mode and light mode
+- [x] Show error block if the definition of the searched keyword cannot be found
+- [x] Add theme switch to toggle between dark mode and light mode
 - [] Add dropdown menu to choose font preference
 - [] Click the audio button to play phonetic audio
 
