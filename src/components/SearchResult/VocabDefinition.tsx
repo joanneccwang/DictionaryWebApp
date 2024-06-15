@@ -45,24 +45,26 @@ const SynOrAnt = ({ title, words }: { title: string; words: string[] }) => {
       }}
     >
       <h4 css={{ marginRight: '20px' }}>{title}</h4>
-      {words.map((word, idx) => (
-        <span
-          key={`${word}-${idx}`}
-          css={(theme) => ({
-            display: 'inline-flex',
-            color: theme.colors.purple,
-            fontWeight: '700',
-            cursor: 'pointer',
-            marginRight: '8px',
-            '&:hover': {
-              textDecoration: 'underline',
-            },
-          })}
-          onClick={() => handleSearch(word)}
-        >
-          {word}
-        </span>
-      ))}
+      <div css={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+        {words.map((word, idx) => (
+          <span
+            key={`${word}-${idx}`}
+            css={(theme) => ({
+              display: 'inline-flex',
+              color: theme.colors.purple,
+              fontWeight: '700',
+              cursor: 'pointer',
+              marginRight: '8px',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            })}
+            onClick={() => handleSearch(word)}
+          >
+            {word}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
@@ -110,7 +112,14 @@ function VocabDefinition({ definition }: { definition: VocabDefinitionType }) {
       <PartOfSpeech pos={definition.partOfSpeech}></PartOfSpeech>
       <DefinitionList list={definition.definitions}></DefinitionList>
 
-      <div css={{ marginTop: '64px' }}>
+      <div
+        css={{
+          marginTop: '64px',
+          display: 'flex',
+          flexDirection: 'column',
+          rowGap: '10px',
+        }}
+      >
         {definition.synonyms && definition.synonyms.length > 0 && (
           <SynOrAnt title='Synonym' words={definition.synonyms}></SynOrAnt>
         )}
