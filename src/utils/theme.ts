@@ -14,7 +14,8 @@ const theme = {
 
   borderRadius: '16px',
 
-  fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
+  fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif',
+  boxShadow: '0px 5px 30px 0px',
 
   h1: {
     fontSize: '64px',
@@ -40,6 +41,7 @@ const darkTheme = {
   ...theme,
   background: theme.colors.black,
   color: theme.colors.white,
+  boxShadowColor: theme.colors.purple,
   text: {
     color: theme.colors.white,
     secondary: theme.colors.gray75,
@@ -57,12 +59,16 @@ const darkTheme = {
   switch: {
     bg: theme.colors.purple,
   },
+  dropdown: {
+    bg: theme.colors.gray1F,
+  },
 };
 
 const lightTheme = {
   ...theme,
   background: theme.colors.white,
   color: theme.colors.gray2D,
+  boxShadowColor: theme.colors.gray2D,
   text: {
     color: theme.colors.gray2D,
     secondary: theme.colors.gray75,
@@ -79,6 +85,9 @@ const lightTheme = {
   },
   switch: {
     bg: theme.colors.gray75,
+  },
+  dropdown: {
+    bg: theme.colors.white,
   },
 };
 
