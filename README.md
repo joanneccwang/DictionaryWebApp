@@ -77,12 +77,14 @@ const { handleSearch } = useContext(
 ) as TypeCurrentKeywordContext;
 ```
 
+I also tried Redux to manage the global state to toggle the app's dark/light theme
+
 ### Continued development
 
 - [x] Show error block if the definition of the searched keyword cannot be found
 - [x] Add theme switch to toggle between dark mode and light mode
-- [] Add dropdown menu to choose font preference
-- [] Click the audio button to play phonetic audio
+- [x] Add dropdown menu to choose font preference
+- [ ] Click the audio button to play phonetic audio
 
 ## Author
 

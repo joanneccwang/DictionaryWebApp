@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { IconArrowDown } from '@components/Icons';
 import { FontFamily } from '@/types/font';
+import { CurrentFontContext } from '@/context';
+import { TypeCurrentFontContext } from '@/context/currentFontContext';
 
 const fonts = {
   [FontFamily.SansSerif]: {
@@ -61,7 +63,9 @@ const Dropdown = ({
 };
 
 function FontDropdown() {
-  const [currentFont, setCurrentFont] = useState(FontFamily.SansSerif);
+  const { currentFont, changeCurrentFont } = useContext(
+    CurrentFontContext
+  ) as TypeCurrentFontContext;
 
   const [isShowFontDropdown, setIsShowFontDropdown] = useState(false);
   const toggleFontDropdown = () => {
@@ -82,7 +86,7 @@ function FontDropdown() {
 
       {isShowFontDropdown && (
         <Dropdown
-          onChooseFont={(font) => setCurrentFont(font)}
+          onChooseFont={(font) => changeCurrentFont(font)}
           onClose={() => setIsShowFontDropdown(false)}
         ></Dropdown>
       )}
