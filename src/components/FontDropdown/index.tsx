@@ -45,6 +45,7 @@ const Dropdown = ({
     >
       {Object.values(fonts).map((font) => (
         <div
+          key={font.value}
           css={(theme) => ({
             cursor: 'pointer',
             '&:hover': { color: theme.colors.purple },
