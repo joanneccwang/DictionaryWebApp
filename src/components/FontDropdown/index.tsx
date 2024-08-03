@@ -37,6 +37,7 @@ const Dropdown = ({
         top: 'calc(100% + 10px)',
         right: '0px',
         padding: '24px',
+        zIndex: 1,
         borderRadius: theme.borderRadius,
         boxShadow: `${theme.boxShadow} ${theme.boxShadowColor}`,
         width: 'max-content',
